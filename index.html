@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="Logo.svg">
+    <title>AMTPI - Transport Public Iași</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-group">
+                <img src="logo.svg" alt="Logo" class="main-logo">
+                <div class="logo-text">
+                    <small>Asociația Metropolitană de<br> Transport Public Iași</small>
+                </div>
+            </a>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#" class="active">Acasă</a></li>
+                <li><a href="#">Trasee</a></li>
+                <li><a href="#">Tarife și gratuități</a></li>
+                <li><a href="#">Despre noi</a></li>
+                <li><a href="#">Documente</a></li>
+                <li><a href="#">Transparență decizională</a></li>
+                <li><a href="#">Concursuri</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="search-card">
+                    <h3>TRASEE</h3>
+                    <form id="route-search">
+                        <div class="input-group">
+                            <i class="fas fa-location-dot"></i>
+                            <select id="select-plecare">
+                                <option value="" disabled selected>ALEGE COMUNA</option>
+                                <option value="Aroneanu">Aroneanu</option>
+                                <option value="Barnova">Bârnova</option>
+                                <option value="Ciurea">Ciurea</option>
+                                <option value="Holboca">Holboca</option>
+                                <option value="Miroslava">Miroslava</option>
+                                <option value="Popricani">Popricani</option>
+                                <option value="Rediu">Rediu</option>
+                                <option value="Tomesti">Tomești</option>
+                                <option value="ValeaLupului">Valea Lupului</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-route"></i>
+                            <select id="select-traseu" disabled>
+                                <option value="" disabled selected>ALEGE TRASEUL</option>
+                            </select>
+                        </div>
+                        <p id="msg-indisponibil">
+                            "(“Indisponibil”)* = Traseul este în faza de proiect. Implementarea lui va fi anunțată în timp util."
+                        </p>
+                        <div class="search-button-container">
+                            <button type="submit" class="btn-search-navy">CAUTĂ RUTĂ</button>
+                        </div>
+                    </form>
+                </div>
+                <button class="btn-buy-orange" id="btn-open-modal">CUMPĂRĂ BILET ONLINE</button>
+                <div class="hero-text">
+                    <h1>CĂLĂTOREȘTE INTELIGENT. <br>ORAȘUL TĂU, MOBILITATEA TA.</h1>
+                    <p>Asociația de transport în comun oferă soluții moderne pentru o mobilitate sustenabilă în orașul tău.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="results-section" style="display: none;">
+        <div class="results-card">
+            <div class="results-header">
+                <h2 id="res-titlu-traseu">Traseu</h2>
+                <p id="res-descriere">Selectați direcția și perioada pentru a vedea orarul.</p>
+            </div>
+            
+            <div class="direction-container">
+                <button class="dir-btn active" data-dir="dus">TUR (Spre Destinație)</button>
+                <button class="dir-btn" data-dir="intors">RETUR (Spre Oraș)</button>
+            </div>
+
+            <div class="days-toggle">
+                <button class="day-btn active" data-day="lucratoare">Luni - Vineri</button>
+                <button class="day-btn" data-day="weekend">Sâmbătă - Duminică</button>
+            </div>
+
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                <button id="btn-next-bus" class="btn-highlight"><i class="far fa-clock"></i> Vezi următoarea plecare</button>
+            </div>
+
+            
+            <div class="timetable-wrapper">
+                <div class="grid-header">Ore de plecare:</div>
+                <div class="hours-grid" id="hours-display"></div>
+            </div>
+            <div class="info-footer">
+                <i class="fas fa-info-circle"></i> Timpii pot varia în funcție de condițiile de trafic.
+            </div>
+        </div>
+    </section>
+
+    <div id="tickets-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header-title">
+                <h2><i class="fas fa-ticket-alt"></i> Tarife și Abonamente AMTPI</h2>
+            </div>
+            
+            <div class="ticket-container">
+                <div class="ticket-category">
+                    <h3 class="category-title"><i class="fas fa-tags"></i> Tichete de Călătorie</h3>
+                    <div class="cards-grid">
+                        
+                        <div class="price-card blue">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="fas fa-ticket-alt"></i></div>
+                                    <div class="price">9 RON</div>
+                                </div>
+                                <h4>Bilet Metropolitan 3 Ore</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> Maxim 3 ore</p>
+                                    <p><strong>Zonă:</strong> Toate comunele + Municipiul Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-map-pin"></i>
+                                        <span>Aroneanu, Bârnova, Ciurea, Holboca, Miroslava, Popricani, Rediu, Tomești, Valea Lupului + Mun. Iași</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+
+                        <div class="price-card green">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="fas fa-ticket-alt"></i></div>
+                                    <div class="price">7 RON</div>
+                                </div>
+                                <h4>Bilet Comună-Iași 2 Ore</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> Maxim 2 ore</p>
+                                    <p><strong>Zonă:</strong> Din comună până la capătul de traseu în Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-level-down-alt"></i>
+                                        <span>Din comună până la punctele de debarcare din Municipiul Iași</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+
+                        <div class="price-card purple">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="fas fa-tags"></i></div>
+                                    <div class="price">16 RON</div>
+                                </div>
+                                <h4>Pachet 2 Călătorii</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> 3 ore fiecare călătorie</p>
+                                    <p><strong>Zonă:</strong> Toate comunele + Municipiul Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-briefcase"></i>
+                                        <span>2 călătorii valabile 3h fiecare pe întreaga rază metropolitană</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ticket-category" style="margin-top: 40px;">
+                    <h3 class="category-title"><i class="far fa-calendar-alt"></i> Abonamente</h3>
+                    <div class="cards-grid">
+                        
+                        <div class="price-card orange">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="far fa-calendar-check"></i></div>
+                                    <div class="price">320 RON</div>
+                                </div>
+                                <h4>Abonament 30 Zile - Complet</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> 30 zile</p>
+                                    <p><strong>Călătorii:</strong> Nelimitate</p>
+                                    <p><strong>Zonă:</strong> Toate comunele + Municipiul Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-infinity"></i>
+                                        <span>Călătorii nelimitate pe întreaga rază metropolitană</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+
+                        <div class="price-card green">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="far fa-calendar-check"></i></div>
+                                    <div class="price">230 RON</div>
+                                </div>
+                                <h4>Abonament 30 Zile - Comună</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> 30 zile</p>
+                                    <p><strong>Călătorii:</strong> Nelimitate</p>
+                                    <p><strong>Zonă:</strong> Din comună până în Municipiul Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-map-signs"></i>
+                                        <span>Până la punctele de debarcare din Municipiul Iași</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+
+                        <div class="price-card blue">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="far fa-calendar-check"></i></div>
+                                    <div class="price">1100 RON</div>
+                                </div>
+                                <h4>Abonament 6 Luni</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> 6 luni</p>
+                                    <p><strong>Călătorii:</strong> Nelimitate</p>
+                                    <p><strong>Zonă:</strong> Din comună până în Municipiul Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-gem"></i>
+                                        <span>Economisești ~ 183 RON faţă de abonamentul lunar!</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+
+                        <div class="price-card purple">
+                            <div class="card-content">
+                                <div class="card-header-top">
+                                    <div class="icon-faded"><i class="fas fa-star" style="color:#F39C12;"></i></div>
+                                    <div class="price" style="color:#9B59B6;">2700 RON</div>
+                                </div>
+                                <h4>Abonament Anual</h4>
+                                <hr class="dashed-divider">
+                                <div class="card-details">
+                                    <p><strong>Valabilitate:</strong> 1 an (365 zile)</p>
+                                    <p><strong>Călătorii:</strong> Nelimitate</p>
+                                    <p><strong>Zonă:</strong> Toate comunele + Municipiul Iași</p>
+                                    <div class="card-extra">
+                                        <i class="fas fa-bolt" style="color: #F39C12;"></i>
+                                        <span>Economisești ~ 1.140 RON pe an!</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-buy-now">Cumpără prin 24pay</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+          <div class="footer-copyright">
+                &copy; 2024 <strong>AMTPI</strong> <br>
+                <span style="font-size: 11px; color: #888;">Asociația Metropolitană de Transport Public Iași</span><br>
+                <span style="font-size: 10px; color: #d9534f; font-weight: bold;">*Acest site este un proiect educațional pentru facultate și NU este platforma oficială AMTPI.</span>
+            </div>
+            
+            <a href="https://www.facebook.com/p/Transport-Metropolitan-Ia%C8%99i-100085326913030/" target="_blank" class="fb-link">
+                <i class="fab fa-facebook-f"></i> Urmărește-ne pe Facebook
+            </a>
+            
+            <a href="#" class="footer-contact-link">Contact</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
