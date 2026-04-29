@@ -43,7 +43,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
 .btn-search-navy { background: var(--navy-blue); color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
 .btn-buy-orange { background: var(--primary-orange); color: white; border: none; padding: 18px 30px; border-radius: 10px; font-size: 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4); }
 
-.hero-text { color: #111; max-width: 550px; }
+.hero-text { color: #FFFFFF; max-width: 550px; }
 .hero-text h1 { font-size: 34px; font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
 .hero-text p { font-size: 16px; font-weight: 500; }
 
