@@ -4,11 +4,11 @@
     --white: #FFFFFF;
 }
 
-/* RESET */
+
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 body { background: #f4f6f8; display: flex; flex-direction: column; min-height: 100vh; }
 
-/* NAVBAR */
+
 .navbar { background: var(--white); padding: 12px 0; border-bottom: 1px solid #eee; position: relative; z-index: 1000; }
 .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
 .logo-group { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -19,12 +19,11 @@ body { background: #f4f6f8; display: flex; flex-direction: column; min-height: 1
 .nav-links a.active, .nav-links a:hover { color: #FF0000; }
 .menu-toggle { display: none; cursor: pointer; font-size: 24px; color: var(--navy-blue); }
 
-/* HERO SECTION */
-/* HERO SECTION */
+
 .hero-section { 
     position: relative; 
-    flex: 1; /* Asta obligă imaginea să se întindă până jos, lipindu-se de footer */
-    min-height: 80vh; /* Păstrăm proporția ca să nu se strivească pe ecrane mici */
+    flex: 1; 
+    min-height: 80vh; 
     background: url('hero-foto.jpg') center/cover no-repeat; 
     display: flex; 
     align-items: center; 
@@ -32,7 +31,7 @@ body { background: #f4f6f8; display: flex; flex-direction: column; min-height: 1
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.3); z-index: 1; }
 .hero-content { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-left: 80px; }
 
-/* SEARCH CARD */
+
 .search-card { background: rgba(220, 207, 183, 0.95); padding: 25px; border-radius: 15px; width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
 .search-card h3 { text-align: center; margin-bottom: 15px; font-weight: 900; color: #333; }
 .input-group { background: white; padding: 12px; border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; border: 1px solid #ddd; }
@@ -47,7 +46,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
 .hero-text h1 { font-size: 34px; font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
 .hero-text p { font-size: 16px; font-weight: 500; }
 
-/* ORARE REZULTATE */
+
 #results-section { width: 100%; display: flex; justify-content: center; padding: 40px 20px; }
 .results-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); border: 1px solid #eee; width: 100%; max-width: 800px; }
 .results-header { text-align: center; margin-bottom: 25px; }
@@ -58,7 +57,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
 .hours-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 12px; margin-top: 20px; }
 .hour-item { background: white; border: 2px solid #eef2f5; padding: 10px; text-align: center; border-radius: 8px; font-weight: 700; color: var(--navy-blue); }
 
-/* --- MODAL / POP-UP TARIFE (NOUL DESIGN EXACT CA ÎN POZĂ) --- */
+
 .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
 .modal-content { background: #fdfdfd; margin: 3% auto; padding: 40px 50px; border-radius: 20px; width: 95%; max-width: 1100px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
 
@@ -70,13 +69,13 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
 
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; align-items: stretch; }
 
-/* STRUCTURA CARD */
+
 .price-card { 
     background: white; 
     padding: 25px 20px; 
     border-radius: 12px; 
-    text-align: left; /* Aliniere stânga ca în poză */
-    border-left: 6px solid #ccc; /* Linia colorată este în STÂNGA */
+    text-align: left; 
+    border-left: 6px solid #ccc; 
     box-shadow: 0 8px 25px rgba(0,0,0,0.06); 
     display: flex; 
     flex-direction: column; 
@@ -112,7 +111,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
 }
 .card-extra i { color: #d9534f; margin-top: 2px; font-size: 12px; }
 
-/* CULORI SPECIFICE (BORDER STÂNGA + TEXT PREȚ) */
+
 .price-card.blue { border-left-color: #4A90E2; }
 .price-card.blue .price { color: #4A90E2; }
 
@@ -128,14 +127,14 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
 .price-card.green-light { border-left-color: #1ABC9C; }
 .price-card.green-light .price { color: #1ABC9C; }
 
-/* BUTONUL 24 PAY JOS */
+
 .btn-buy-now { background-color: var(--navy-blue); color: #ffffff; border: none; padding: 12px; width: 100%; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
 .btn-buy-now:hover { background-color: var(--primary-orange); }
 
-/* --- FOOTER MODERNIZAT --- */
+
 .main-footer { 
     background: white; 
-    border-top: 4px solid var(--navy-blue); /* O bandă groasă sus pentru un aspect oficial */
+    border-top: 4px solid var(--navy-blue); 
     padding: 30px 0; 
     margin-top: auto; 
 }
@@ -160,12 +159,12 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
     font-size: 16px;
 }
 
-/* Butonul de Facebook */
+
 .fb-link {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #1877F2; /* Culoarea oficială Facebook */
+    background: #1877F2; 
     color: white;
     padding: 12px 24px;
     border-radius: 30px;
@@ -183,7 +182,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
     color: white;
 }
 
-/* Link-ul de Contact */
+
 .footer-contact-link {
     color: var(--navy-blue);
     text-decoration: none;
@@ -197,7 +196,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
     color: var(--primary-orange);
 }
 
-/* RESPONSIVE PENTRU FOOTER PE MOBIL */
+
 @media (max-width: 768px) {
     .main-footer .footer-content {
         flex-direction: column;
@@ -206,7 +205,7 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
     }
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 1100px) {
     .menu-toggle { display: block; }
     .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 10px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
@@ -215,9 +214,9 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
     .hero-content { padding-left: 20px; } 
     .search-card { width: 100%; }
 }
-/* --- BUTON URMĂTOAREA PLECARE --- */
+
 .btn-highlight {
-    background-color: #2ECC71; /* Verde pentru a sugera "Acțiune / Go" */
+    background-color: #2ECC71; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -235,12 +234,12 @@ select { width: 100%; border: none; outline: none; font-weight: 600; color: var(
     box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
 }
 
-/* --- CLASA CARE EVIDENȚIAZĂ ORA --- */
+
 .hour-item.next-departure {
     background-color: var(--primary-orange);
     color: white;
     border-color: var(--primary-orange);
-    transform: scale(1.15); /* Îl face un pic mai mare */
+    transform: scale(1.15); 
     box-shadow: 0 5px 15px rgba(230, 126, 34, 0.5);
     position: relative;
     z-index: 2;
