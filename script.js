@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. BAZA DATE ORARE COMPLETE ---
+    
     const bazaDateOrare = {
         "101 Tg Cucu – Dorobant": {
             "dus": { "lucratoare": ["04:15", "05:15", "06:15", "07:15", "08:45", "10:15", "12:15", "13:15", "14:15", "15:15", "16:15", "17:15", "18:15", "19:45", "21:15", "22:30"], "weekend": ["05:45", "07:15", "08:45", "12:15", "14:15", "16:15", "18:15", "20:15"] },
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- 2. LISTA TRASEE DROPDOWN (FĂRĂ BULINE) ---
+    
     const dateTrasee = {
         "Aroneanu": ["101 Tg Cucu – Dorobant", "102 Tg Cucu – Aroneanu", "103 Tg Cucu – Sorogari", "104 Primaria Aroneanu – Rediu Aldei"],
         "Barnova": ["201 Podu Roș – Todirel", "202 Podu Ros – Paun", "203 Podu ros – Visan", "204 Pietrăria – Vișan"],
@@ -115,14 +115,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentRoute = "", currentDir = "dus", currentDay = "lucratoare";
 
-    // --- ELEMENTE DOM ---
+    
     const selectPlecare = document.getElementById('select-plecare');
     const selectTraseu = document.getElementById('select-traseu');
     const resultsSection = document.getElementById('results-section');
     const hoursDisplay = document.getElementById('hours-display');
     const msgIndisponibil = document.getElementById('msg-indisponibil');
 
-    // --- LOGICĂ DROPDOWNS ---
+   
     selectPlecare.addEventListener('change', function() {
         const trasee = dateTrasee[this.value] || [];
         selectTraseu.innerHTML = '<option value="" disabled selected>ALEGE TRASEUL</option>';
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- AFISARE ORE ---
+    
     function updateTimetable() {
         const routeData = bazaDateOrare[currentRoute];
         hoursDisplay.innerHTML = '';
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- CAUTARE RUTĂ (NOUA LOGICĂ) ---
+    
     document.getElementById('route-search').addEventListener('submit', function(e) {
         e.preventDefault();
         const tVal = selectTraseu.value;
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- BUTOANE FILTRU ORAR ---
+    
     document.querySelectorAll('.dir-btn, .day-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             this.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- MODAL / POP-UP BILETE ---
+    
     const modal = document.getElementById("tickets-modal");
     
     document.getElementById("btn-open-modal").onclick = () => { 
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
     };
 
-    // --- REDIRECT 24PAY ---
+    
     document.querySelectorAll('.btn-buy-now').forEach(btn => {
         btn.onclick = () => {
             const userAgent = navigator.userAgent || navigator.vendor;
@@ -227,14 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
 
-    // --- MENU MOBIL (HAMBURGER) ---
+    
     const menuToggle = document.getElementById('mobile-menu');
     if (menuToggle) {
         menuToggle.onclick = () => {
             document.getElementById('nav-menu').classList.toggle('active');
         };
     }
-    // --- LOGICA PENTRU "URMĂTOAREA PLECARE" ---
+    
     const btnNextBus = document.getElementById('btn-next-bus');
     
     if (btnNextBus) {
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.remove('next-departure');
             });
 
-            // 2. Luăm ora curentă a utilizatorului
+            
             const now = new Date();
             const currentHour = now.getHours();
             const currentMinute = now.getMinutes();
@@ -252,12 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const routeData = bazaDateOrare[currentRoute];
             
-            // Verificăm dacă avem orar valid selectat
+           
             if (routeData && routeData[currentDir] && routeData[currentDir][currentDay]) {
                 const orar = routeData[currentDir][currentDay];
                 let foundIndex = -1;
 
-                // 3. Căutăm prima oră din listă care este strict mai mare decât ora curentă
+                
                 for (let i = 0; i < orar.length; i++) {
                     const [h, m] = orar[i].split(':').map(Number);
                     const scheduleTimeInMinutes = h * 60 + m;
@@ -268,17 +268,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // 4. Dacă am găsit o plecare în viitor
+                
                 if (foundIndex !== -1) {
                     const hourElements = document.querySelectorAll('.hour-item');
                     if (hourElements[foundIndex]) {
                         hourElements[foundIndex].classList.add('next-departure');
                         
-                        // Pe mobil, dacă sunt multe ore, facem scroll automat ca să o vadă direct
+                       
                         hourElements[foundIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
                 } else {
-                    // Dacă toate autobuzele de azi au plecat deja
+                    
                     alert('Nu mai sunt plecări programate pentru restul zilei de azi pe acest traseu.');
                 }
             }
